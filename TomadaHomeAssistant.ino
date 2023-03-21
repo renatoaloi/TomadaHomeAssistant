@@ -9,7 +9,7 @@ const int relayPin = 1;
 
 //Informações do Servidor MQTT
 const char* mqttserver = "raspberrypi.local";
-int mqttserverport = "1883";
+int mqttserverport = 1883;
 const char* mqttuser = "aloitech";
 const char* mqttpass = "aloioff";
 
