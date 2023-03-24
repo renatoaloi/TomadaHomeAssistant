@@ -48,7 +48,8 @@ void publishConfigTopic() {
   Serial.println(topicConfig);
   Serial.println(topicConfigJson);
   Serial.println(topicConfigJson.c_str());
-  clientMQTT.publish(topicConfig, "{\"unique_id\": \"tomada_escritorio\", \"device_class\": \"switch\", \"name\": \"Tomada Inteligente\", \"state_topic\": \"aloioff/tomada1\", \"command_topic\": \"aloioff/tomada1\" }", true);
+  clientMQTT.setBufferSize(2000);
+  clientMQTT.publish(topicConfig, topicConfigJson.c_str(), true);
 }
 
 void publishInitialStateTopic() {
