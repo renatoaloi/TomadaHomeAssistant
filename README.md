@@ -3,7 +3,7 @@
 ### Comando para publicar mensagem retida no tópico do Mosquitto
 
 ```sh
-mosquitto_pub -h 192.168.0.104 -p 1883 -t "homeassistant/switch/aloioff/tomada1/config" -m '{"unique_id": "tomada_escritorio", "device_class": "switch", "name": "Tomada Inteligente", "state_topic": "homeassistant/switch/aloioff/tomada1/state", "command_topic": "homeassistant/switch/aloioff/tomada1/command" }' -u aloitech -P aloioff -r
+mosquitto_pub -h 192.168.0.104 -p 1883 -t "homeassistant/switch/aloioff/tomada1/config" -m '{"unique_id": "tomada_escritorio", "device_class": "switch", "name": "Tomada Inteligente", "state_topic": "aloioff/tomada1", "command_topic": "aloioff/tomada1", "payload_on": "ON", "payload_off": "OFF", "state_on": "ON", "state_off": "OFF" }' -u aloitech -P aloioff -r
 ```
 
 ### Comando para se inscrever no tópico

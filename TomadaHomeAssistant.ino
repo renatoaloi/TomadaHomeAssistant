@@ -1,6 +1,5 @@
 #include <PubSubClient.h>
 #include <ESP8266WiFi.h>
-
 const int relayPin = 1;
 
 //Informações do WiFi
@@ -15,9 +14,16 @@ const char* mqttpass = "aloioff";
 
 // Informações dos tópicos
 const char* topicConfig = "homeassistant/switch/aloioff/tomada1/config";
-const char* topicCommand = "homeassistant/switch/aloioff/tomada1/command";
-const char* topicState = "homeassistant/switch/aloioff/tomada1/state";
-const char* topicConfigJson = "{\"unique_id\": \"tomada_escritorio\", \"device_class\": \"switch\", \"name\": \"Tomada Inteligente\", \"state_topic\": \"homeassistant/switch/aloioff/tomada1/state\", \"command_topic\": \"homeassistant/switch/aloioff/tomada1/command\" }";
+const char* topicCommand = "aloioff/tomada1";
+const char* topicState = "aloioff/tomada1";
+const char* uniqueId = "tomada_escritorio";
+const char* deviceClass = "switch";
+const char* name = "Tomada Inteligente";
+const char* payloadOn = "ON";
+const char* payloadOff = "OFF";
+const char* stateOn = "ON";
+const char* stateOff = "OFF";
+String topicConfigJson;
 
 unsigned long lastMsg = 0;
 #define MSG_BUFFER_SIZE  (50)
@@ -37,6 +43,20 @@ void setup() {
   if (!clientMQTT.connected()) {
     reconnectMQTT();
   }
+
+  topicConfigJson.reserve(2000);
+  topicConfigJson = generateConfigJson(
+    uniqueId, 
+    deviceClass, 
+    name, 
+    topicState, 
+    topicCommand,
+    payloadOn,
+    payloadOff,
+    stateOn,
+    stateOff
+  );
+  
   publishConfigTopic();
   subscribeSwitchTopic();
   publishInitialStateTopic();

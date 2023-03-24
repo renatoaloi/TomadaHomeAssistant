@@ -44,7 +44,11 @@ void reconnectWiFi() {
 }
 
 void publishConfigTopic() {
-  clientMQTT.publish(topicConfig, topicConfigJson, true);
+  Serial.println();
+  Serial.println(topicConfig);
+  Serial.println(topicConfigJson);
+  Serial.println(topicConfigJson.c_str());
+  clientMQTT.publish(topicConfig, "{\"unique_id\": \"tomada_escritorio\", \"device_class\": \"switch\", \"name\": \"Tomada Inteligente\", \"state_topic\": \"aloioff/tomada1\", \"command_topic\": \"aloioff/tomada1\" }", true);
 }
 
 void publishInitialStateTopic() {
