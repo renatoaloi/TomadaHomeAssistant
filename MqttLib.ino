@@ -2,10 +2,18 @@ void callback(char* topic, byte* payload, unsigned int length) {
   Serial.print("Message arrived [");
   Serial.print(topic);
   Serial.print("] ");
+  String message = "";
   for (int i = 0; i < length; i++) {
-    Serial.print((char)payload[i]);
+    message.concat((char)payload[i]);
   }
+  Serial.print(message);
   Serial.println();
+
+  if ((strcmp(message.c_str(), "ON") == 0)) {
+    digitalWrite(RELE, HIGH);
+  } else {
+    digitalWrite(RELE, LOW);
+  }
 }
 
 void reconnectMQTT() {

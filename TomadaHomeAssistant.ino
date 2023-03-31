@@ -2,15 +2,17 @@
 #include <ESP8266WiFi.h>
 const int relayPin = 1;
 
+#define RELE 0
+
 //Informações do WiFi
 #define WIFISSID "AloiTech"
 #define WIDIPASS "papajoao23"
 
 //Informações do Servidor MQTT
-const char* mqttserver = "raspberrypi.local";
+const char* mqttserver = "aloiquitto.local";
 int mqttserverport = 1883;
-const char* mqttuser = "aloitech";
-const char* mqttpass = "aloioff";
+const char* mqttuser = "";
+const char* mqttpass = "";
 
 // Informações dos tópicos
 const char* topicConfig = "homeassistant/switch/aloioff/tomada1/config";
@@ -60,6 +62,9 @@ void setup() {
   publishConfigTopic();
   subscribeSwitchTopic();
   publishInitialStateTopic();
+
+  pinMode(RELE, OUTPUT);
+  digitalWrite(RELE, LOW);
 }
 
 void loop() {
