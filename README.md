@@ -1,5 +1,18 @@
 # TomadaHomeAssistant
 
+### Instruções
+
+- Baixar o código na pasta `TomadaHomeAssistant`
+- Abrir o `TomadaHomeAssistant.ino` no Arduino IDE
+- Ajustar com as suas configurações de WiFi e MQTT
+- Subir o Código para o ESP8266
+- Instalar e configurar o NodeRed
+- Instalar plugin `Dashboard` no NodeRed
+- Instalar e configurar o Mosquitto Broker
+- Importar o arquivo `flows.json` no NodeRed
+- Ajustar configurações do seu ambiente
+- Acessar o dashboard do NodeRed e testar
+
 ### Comando para publicar mensagem retida no tópico do Mosquitto
 
 ```sh
